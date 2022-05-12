@@ -96,6 +96,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_days_interval"></a> [days\_interval](#input\_days\_interval) | Number of days interval to review CPU Utilization and deliver a report to the provided endpoint. This interval is also used as the period for Cloudwatch metrics. | `number` | `14` | no |
 | <a name="input_email_address_list"></a> [email\_address\_list](#input\_email\_address\_list) | List of email addreses to send under-utilised DB list through SNS | `list(string)` | `[]` | no |
+| <a name="input_exempt_db_classes"></a> [exempt\_db\_classes](#input\_exempt\_db\_classes) | List of DB instance classes that are expemted from monitoring. | `list(string)` | `[]` | no |
 | <a name="input_slack_webhook_ssm"></a> [slack\_webhook\_ssm](#input\_slack\_webhook\_ssm) | AWS Parameter store name for slack endpoint to send under-utilised DB list in using AWS lambda | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be applied to created resources | `map(string)` | `{}` | no |
 | <a name="input_utilisation_threshold"></a> [utilisation\_threshold](#input\_utilisation\_threshold) | This is the CPU Utilization threshold in percentage below which an RDS instance is considered under-utilised. | `number` | `25` | no |

@@ -17,6 +17,8 @@ def lambda_handler(event, context):
     db_utilisation_threshold = os.environ["DB_UTIL_THRESHOLD"]
     slack_webhook_ssm = os.environ["SLACK_WEBHOOK_SSM"]
     aws_region = os.environ["AWS_REGION"]
+
+    exempt_db_classes = list(event["exempt_db_classes"])
     
     rds_client = boto3.client('rds')
     sns_client = boto3.client('sns')
@@ -29,7 +31,7 @@ def lambda_handler(event, context):
 
     db_instace_list = rds_client.describe_db_instances()
 
-    db_identifier_list = [each_db_dict["DBInstanceIdentifier"] for each_db_dict in db_instace_list["DBInstances"]]
+    db_identifier_list = [each_db_dict["DBInstanceIdentifier"] for each_db_dict in db_instace_list["DBInstances"] if each_db_dict["DBInstanceClass"] not in exempt_db_classes]
 
     logger.info(f"{db_identifier_list.count} DB instances returned for current region")
 

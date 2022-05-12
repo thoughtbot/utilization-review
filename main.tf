@@ -168,6 +168,10 @@ resource "aws_sns_topic_subscription" "rds_review" {
 resource "aws_cloudwatch_event_target" "rds_review" {
   arn  = aws_lambda_function.rds_review.arn
   rule = aws_cloudwatch_event_rule.rds_review.id
+
+  input = jsonencode({
+    "exempt_db_classes" : var.exempt_db_classes
+  })
 }
 
 resource "aws_cloudwatch_event_rule" "rds_review" {

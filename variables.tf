@@ -15,6 +15,12 @@ variable "days_interval" {
   default     = 14
 }
 
+variable "exempt_db_classes" {
+  description = "List of DB instance classes that are expemted from monitoring."
+  type        = list(string)
+  default     = []
+}
+
 variable "utilisation_threshold" {
   description = "This is the CPU Utilization threshold in percentage below which an RDS instance is considered under-utilised."
   type        = number
