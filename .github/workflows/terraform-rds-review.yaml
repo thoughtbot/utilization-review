@@ -2,6 +2,10 @@ name: Terraform
 on:
 - push
 
+defaults:
+  run:
+    shell: bash
+    working-directory: modules/rds-review
 jobs:
   checkfmt:
     name: Format

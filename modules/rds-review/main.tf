@@ -67,7 +67,7 @@ resource "random_id" "unique_id" {
 
 data "archive_file" "function" {
   output_path = "lambda_function.zip"
-  source_file = "${path.module}/rds-check/lambda_function.py"
+  source_file = "${path.module}/lambda-script/lambda_function.py"
   type        = "zip"
 }
 
@@ -177,7 +177,7 @@ resource "aws_cloudwatch_event_target" "rds_review" {
 resource "aws_cloudwatch_event_rule" "rds_review" {
   name                = local.function_name
   description         = "Cloudwatch event to trigger lambda function to review utilisation for RDS instances"
-  schedule_expression = "rate(${var.days_interval} days)"
+  schedule_expression = "cron(${var.review_frequency})"
 
   tags = local.tags
 }
