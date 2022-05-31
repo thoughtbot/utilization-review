@@ -1,25 +1,6 @@
-<!-- BEGIN_TF_DOCS -->
-## Requirements
+# Utilization Review
 
-No requirements.
+The following modules are available to review the under-utilized resources within a region:
 
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
+* [`modules/rds-review`](https://github.com/thoughtbot/utilization-review/tree/main/modules/rds-review)
+* [`modules/elasticache-review`](https://github.com/thoughtbot/utilization-review/tree/main/modules/elasticache-review)

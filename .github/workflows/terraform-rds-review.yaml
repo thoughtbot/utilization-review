@@ -46,7 +46,7 @@ jobs:
         git-push: true
         output-file: README.md
         output-method: inject
-        working-dir: .
+        working-dir: modules/rds-review
 
   lint:
     name: Lint
