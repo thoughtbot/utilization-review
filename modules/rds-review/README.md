@@ -94,9 +94,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_days_interval"></a> [days\_interval](#input\_days\_interval) | Number of days interval to review CPU Utilization and deliver a report to the provided endpoint. This interval is also used as the period for Cloudwatch metrics. | `number` | `14` | no |
+| <a name="input_days_interval"></a> [days\_interval](#input\_days\_interval) | The Cloudwatch period / interval to review metrics for the RDS instances. | `number` | `7` | no |
 | <a name="input_email_address_list"></a> [email\_address\_list](#input\_email\_address\_list) | List of email addreses to send under-utilised DB list through SNS | `list(string)` | `[]` | no |
 | <a name="input_exempt_db_classes"></a> [exempt\_db\_classes](#input\_exempt\_db\_classes) | List of DB instance classes that are expemted from monitoring. | `list(string)` | `[]` | no |
+| <a name="input_review_frequency"></a> [review\_frequency](#input\_review\_frequency) | This is the cron frenquency to be used by the lambda script. It states how often the lambda script is to be run to review the RDS instances. It is provided in AWS cron expression in UTC+0 - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#eb-cron-expressions. Default value is to run every Monday at 12 PM UTC. | `string` | `"0 12 ? * 2 *"` | no |
 | <a name="input_slack_webhook_ssm"></a> [slack\_webhook\_ssm](#input\_slack\_webhook\_ssm) | AWS Parameter store name for slack endpoint to send under-utilised DB list in using AWS lambda | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be applied to created resources | `map(string)` | `{}` | no |
 | <a name="input_utilisation_threshold"></a> [utilisation\_threshold](#input\_utilisation\_threshold) | This is the CPU Utilization threshold in percentage below which an RDS instance is considered under-utilised. | `number` | `25` | no |

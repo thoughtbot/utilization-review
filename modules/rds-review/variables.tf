@@ -10,9 +10,15 @@ variable "email_address_list" {
 }
 
 variable "days_interval" {
-  description = "Number of days interval to review CPU Utilization and deliver a report to the provided endpoint. This interval is also used as the period for Cloudwatch metrics."
+  description = "The Cloudwatch period / interval to review metrics for the RDS instances."
   type        = number
-  default     = 14
+  default     = 7
+}
+
+variable "review_frequency" {
+  description = "This is the cron frenquency to be used by the lambda script. It states how often the lambda script is to be run to review the RDS instances. It is provided in AWS cron expression in UTC+0 - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#eb-cron-expressions. Default value is to run every Monday at 12 PM UTC."
+  type        = string
+  default     = "0 12 ? * 2 *"
 }
 
 variable "exempt_db_classes" {

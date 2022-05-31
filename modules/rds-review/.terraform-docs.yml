@@ -1,0 +1,9 @@
+formatter: markdown
+
+output:
+  file: README.md
+  mode: inject
+
+settings:
+  # Avoid reading locked version from running validate
+  lockfile: false

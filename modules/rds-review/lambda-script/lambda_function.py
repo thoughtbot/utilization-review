@@ -29,9 +29,9 @@ def lambda_handler(event, context):
 
     start_date = today - datetime.timedelta(days=int(day_interval))
 
-    db_instace_list = rds_client.describe_db_instances()
+    db_instance_list = rds_client.describe_db_instances()
 
-    db_identifier_list = [each_db_dict["DBInstanceIdentifier"] for each_db_dict in db_instace_list["DBInstances"] if each_db_dict["DBInstanceClass"] not in exempt_db_classes]
+    db_identifier_list = [each_db_dict["DBInstanceIdentifier"] for each_db_dict in db_instance_list["DBInstances"] if each_db_dict["DBInstanceClass"] not in exempt_db_classes]
 
     logger.info(f"{db_identifier_list.count} DB instances returned for current region")
 
