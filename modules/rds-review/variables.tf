@@ -27,7 +27,7 @@ variable "exempt_db_classes" {
   default     = []
 }
 
-variable "utilisation_threshold" {
+variable "cpu_utilisation_threshold" {
   description = "This is the CPU Utilization threshold in percentage below which an RDS instance is considered under-utilised."
   type        = number
   default     = 25

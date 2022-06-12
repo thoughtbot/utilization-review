@@ -17,10 +17,11 @@ resource "aws_lambda_function" "elasticache_review" {
 
   environment {
     variables = {
-      SNS_ARN               = aws_sns_topic.elasticache_review.arn
-      DAYS_INTERVAL         = var.days_interval
-      EC_CPU_UTIL_THRESHOLD = var.utilisation_threshold
-      SLACK_WEBHOOK_SSM     = var.slack_webhook_ssm
+      SNS_ARN                  = aws_sns_topic.elasticache_review.arn
+      DAYS_INTERVAL            = var.days_interval
+      EC_CPU_UTIL_THRESHOLD    = var.cpu_utilisation_threshold
+      EC_DB_MEM_UTIL_THRESHOLD = var.memory_utilisation_threshold
+      SLACK_WEBHOOK_SSM        = var.slack_webhook_ssm
     }
   }
   depends_on = [

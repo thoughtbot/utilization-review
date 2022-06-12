@@ -17,10 +17,10 @@ resource "aws_lambda_function" "rds_review" {
 
   environment {
     variables = {
-      SNS_ARN           = aws_sns_topic.rds_review.arn
-      DAYS_INTERVAL     = var.days_interval
-      DB_UTIL_THRESHOLD = var.utilisation_threshold
-      SLACK_WEBHOOK_SSM = var.slack_webhook_ssm
+      SNS_ARN               = aws_sns_topic.rds_review.arn
+      DAYS_INTERVAL         = var.days_interval
+      DB_CPU_UTIL_THRESHOLD = var.cpu_utilisation_threshold
+      SLACK_WEBHOOK_SSM     = var.slack_webhook_ssm
     }
   }
   depends_on = [

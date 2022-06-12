@@ -27,10 +27,16 @@ variable "exempt_instances_classes" {
   default     = []
 }
 
-variable "utilisation_threshold" {
-  description = "This is the CPU Utilization threshold in percentage below which an Elasticache instance is considered under-utilised."
+variable "cpu_utilisation_threshold" {
+  description = "This is the CPU utilization threshold in percentage below which an Elasticache instance is considered under-utilised."
   type        = number
   default     = 0
+}
+
+variable "memory_utilisation_threshold" {
+  description = "This is the memory utilization threshold in percentage below which an Elasticache instance is considered under-utilised."
+  type        = number
+  default     = 25
 }
 
 variable "tags" {

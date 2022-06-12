@@ -14,7 +14,7 @@ def lambda_handler(event, context):
 
     sns_arn = os.environ['SNS_ARN']
     day_interval = os.environ['DAYS_INTERVAL']
-    db_utilisation_threshold = os.environ["DB_UTIL_THRESHOLD"]
+    db_cpu_utilisation_threshold = os.environ["DB_CPU_UTIL_THRESHOLD"]
     slack_webhook_ssm = os.environ["SLACK_WEBHOOK_SSM"]
     aws_region = os.environ["AWS_REGION"]
 
@@ -61,14 +61,14 @@ def lambda_handler(event, context):
 
         cpu_utilization_percentage = cloudwatch_response["Datapoints"][0]["ExtendedStatistics"]["p99"]
 
-        if int(cpu_utilization_percentage) <= int(db_utilisation_threshold):
-            db_return_list.append(f"{db_identifier} : {cpu_utilization_percentage:.2f}%")
+        if int(cpu_utilization_percentage) <= int(db_cpu_utilisation_threshold):
+            db_return_list.append(f"{db_identifier} => {cpu_utilization_percentage:.2f}%")
     
     logger.info(f"{db_return_list.count} DB instances are currently under-utilised.")
 
     if db_return_list:
 
-        db_return_list.insert(0, f"The list of under-utilised RDS instances in `{aws_region}` region for the past `{day_interval}` days (_instances below `{db_utilisation_threshold}%` CPUUtilization_)")
+        db_return_list.insert(0, f"The list of under-utilised RDS instances in `{aws_region}` region for the past `{day_interval}` days (_instances below `{db_cpu_utilisation_threshold}%` CPUUtilization_)")
 
         if sns_arn:
             logger.info(f"Sending under-utilised DB list through SNS.")
