@@ -43,7 +43,7 @@ No modules.
 | <a name="input_email_address_list"></a> [email\_address\_list](#input\_email\_address\_list) | List of email addreses to send under-utilised DB list through SNS | `list(string)` | `[]` | no |
 | <a name="input_slack_webhook_ssm"></a> [slack\_webhook\_ssm](#input\_slack\_webhook\_ssm) | AWS Parameter store name for slack endpoint to send under-utilised DB list in using AWS lambda | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be applied to created resources | `map(string)` | `{}` | no |
-| <a name="input_utilisation_threshold"></a> [utilisation\_threshold](#input\_utilisation\_threshold) | This is the CPU Utilization threshold in percentage below which an RDS instance is considered under-utilised. | `number` | `25` | no |
+| <a name="input_cpu_utilisation_threshold"></a> [utilisation\_threshold](#input\_utilisation\_threshold) | This is the CPU Utilization threshold in percentage below which an RDS instance is considered under-utilised. | `number` | `25` | no |
 
 ## Outputs
 
@@ -94,13 +94,14 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_cpu_utilisation_threshold"></a> [cpu\_utilisation\_threshold](#input\_cpu\_utilisation\_threshold) | This is the CPU utilization threshold in percentage below which an Elasticache instance is considered under-utilised. | `number` | `0` | no |
 | <a name="input_days_interval"></a> [days\_interval](#input\_days\_interval) | The Cloudwatch period / interval to review metrics for the Elasticache instances. | `number` | `7` | no |
 | <a name="input_email_address_list"></a> [email\_address\_list](#input\_email\_address\_list) | List of email addreses to send under-utilised Elasticache list through SNS | `list(string)` | `[]` | no |
 | <a name="input_exempt_instances_classes"></a> [exempt\_instances\_classes](#input\_exempt\_instances\_classes) | List of Elasticache instance classes that are expemted from monitoring. | `list(string)` | `[]` | no |
+| <a name="input_memory_utilisation_threshold"></a> [memory\_utilisation\_threshold](#input\_memory\_utilisation\_threshold) | This is the memory utilization threshold in percentage below which an Elasticache instance is considered under-utilised. | `number` | `25` | no |
 | <a name="input_review_frequency"></a> [review\_frequency](#input\_review\_frequency) | This is the cron frenquency to be used by the lambda script. It states how often the lambda script is to be run to review the Elasticache instances. It is provided in AWS cron expression in UTC+0 - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#eb-cron-expressions. Default value is to run every Monday at 12 PM UTC. | `string` | `"0 12 ? * 2 *"` | no |
 | <a name="input_slack_webhook_ssm"></a> [slack\_webhook\_ssm](#input\_slack\_webhook\_ssm) | AWS Parameter store name for slack endpoint to send under-utilised Elasticache list in using AWS lambda | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be applied to created resources | `map(string)` | `{}` | no |
-| <a name="input_utilisation_threshold"></a> [utilisation\_threshold](#input\_utilisation\_threshold) | This is the CPU Utilization threshold in percentage below which an Elasticache instance is considered under-utilised. | `number` | `25` | no |
 
 ## Outputs
 
